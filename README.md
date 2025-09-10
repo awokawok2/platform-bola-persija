@@ -42,7 +42,7 @@
 
 ---
 
-## Cara mihrasi database di Django bekerja
+## Cara migrasi database di Django bekerja
 - Ubah model `models.py`
 - `py manage.py makemigrations` → menghasilkan file instruksi migrasi
 - `py manage.py migrate` → menerapkan ke database
