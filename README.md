@@ -66,4 +66,24 @@ selama menjalani perkuliahan 2 minggu belum ada masalah,  ASDOS sangat baik dala
 
 ---
 
+## Alasan data delivery diperlukan dalam implentasi sebuah platform
+1. Keamanan dan Reliabilitas: data delivery mencakup enkripsi, autentikasi, dan mekanisme retry
+2. Ketersidiaan Informasi: agar interaksi berjalan lancar, data yang dibutuhkan setiap pihak harus tersedia tepat waktu karena platfrom dapat meilbatkan baynyak pengguna
+3. Konsistensi dan Sinkronisasi: data delivery membantu menjaga konsistensi data antara berbagai modul (misalnya profil pengguna, transaksi, inventori)
+
+---
+
+#Perbandingan XML dan JSON
+1. Struktur dan Sintaks
+   - XML menggunakan tag <tag>...</tag> yang lebih verbose (panjang).
+   - JSON menggunakan pasangan kunci–nilai ("key": "value") yang ringkas dan lebih mudah dibaca.
+
+2. Keterbacaan (Readability)
+   - XML lebih mirip dokumen dengan banyak atribut dan nested tags → bagus untuk data dengan struktur kompleks, tapi lebih sulit dipahami cepat.
+   - JSON lebih sederhana dan mirip dengan struktur objek di bahasa pemrograman modern (JavaScript, Python, Java).
+
+3. Ukuran Data
+   - XML lebih berat karena banyak tag pembuka dan penutup.
+   - JSON lebih ringan → ukuran file lebih kecil → lebih cepat dikirim lewat jaringan.
+
 Raditya Amoret - 2406495735 - PBP D
