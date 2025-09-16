@@ -1,3 +1,5 @@
+Link: https://raditya-amoret-platformbolapersija.pbp.cs.ui.ac.id
+---
 ## Step by Step Implementasi Checklist
 1. **Inisialisasi Proyek Django**
    - Membuat virtual environment: `python -m venv env`
@@ -31,7 +33,12 @@
   ---
 
   ## Request Client berbasis Django: urls.py, views.py, models.py, dan berkas HTML.
-
+   ![alt text](https://www.raystec.com/assets/img/rays/pythondjango.png)
+   1. `urls.py` → mencocokkan URL dengan fungsi view.
+   2. `views.py` → logika utama; ambil data dari model, lalu pilih template.
+   3. `models.py` → definisi data & interaksi dengan database.
+   4. `Template HTML` → menyajikan data ke user dalam bentuk antarmuka.
+      
   ---
 
   ## Peran `settings.py` dalam proyek Django
