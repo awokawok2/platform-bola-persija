@@ -73,7 +73,7 @@ selama menjalani perkuliahan 2 minggu belum ada masalah,  ASDOS sangat baik dala
 
 ---
 
-#Perbandingan XML dan JSON
+## Perbandingan XML dan JSON
 1. Struktur dan Sintaks
    - XML menggunakan tag <tag>...</tag> yang lebih verbose (panjang).
    - JSON menggunakan pasangan kunci–nilai ("key": "value") yang ringkas dan lebih mudah dibaca.
@@ -85,5 +85,27 @@ selama menjalani perkuliahan 2 minggu belum ada masalah,  ASDOS sangat baik dala
 3. Ukuran Data
    - XML lebih berat karena banyak tag pembuka dan penutup.
    - JSON lebih ringan → ukuran file lebih kecil → lebih cepat dikirim lewat jaringan.
+
+---
+
+## Penjelasan Fungsi is_valid()
+- Keamanan data → mencegah input yang tidak sesuai (misalnya SQL injection, email tidak valid, nilai kosong pada field wajib).
+- Konsistensi data → memastikan data yang masuk ke database sudah benar sesuai dengan model/aturan bisnis.
+- User experience → error yang ditemukan bisa ditampilkan kembali ke pengguna sehingga mereka tahu apa yang salah.
+
+---
+
+## Penjelasan csrf_token
+csrf_token adalah Cross-Site Request Forgery token, Token ini di-generate secara otomatis oleh Django untuk mencegah serangan berbahaya, seperti:
+- Melindungi form dari serangan CSRF → memastikan request POST benar-benar datang dari user yang sedang login, bukan dari situs berbahaya.
+- Memvalidasi keaslian request → saat form dikirim, Django akan memeriksa apakah token yang dikirim user sama dengan token yang disimpan server.
+- Menambah lapisan keamanan selain autentikasi dan otorisasi.
+
+Jika csrf_token tidak ada, aplikasi akan rentan terhadap serangan CSRF. Penyerang bisa memaksa pengguna yang sedang login untuk melakukan aksi berbahaya tanpa mereka sadari. Hal ini dapat dimanfaatkan untuk mencuri informasi sensitif, melakukan transaksi keuangan ilegal, mengambil alih akun, mengubah konfigurasi, atau bahkan merusak reputasi pengguna maupun organisasi.
+
+
+
+
+
 
 Raditya Amoret - 2406495735 - PBP D
