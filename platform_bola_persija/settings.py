@@ -32,6 +32,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "raditya-amoret-platformbolapersija.pbp.cs.ui.ac.id"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "<url-deployment-pws-kamu>"
+]
 
 # Application definition
 
@@ -60,7 +63,7 @@ ROOT_URLCONF = 'platform_bola_persija.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
