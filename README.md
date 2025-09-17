@@ -1,4 +1,6 @@
-Link: https://raditya-amoret-platformbolapersija.pbp.cs.ui.ac.id
+Link: 
+https://raditya-amoret-platformbolapersija.pbp.cs.ui.ac.id
+
 ---
 ## Step by Step Implementasi Checklist
 1. **Inisialisasi Proyek Django**
@@ -111,12 +113,94 @@ Menurut saya tidak ada masalah, intstruksi yag diberikan oleh ASDOS dalam tutori
 
 ---
 ## Step by Step Implementasi Checklist tugas 2
-1. Skeleton Views / Template Dasar
-   - Buat folder `templates` di direktori root proyek.
-   - Tambahkan berkas `base.html` di templates/ dengan struktur `template dasar` (header, body, block meta, block content).
-   - Di `settings.py`, pada variabel TEMPLATES, tambahkan `BASE_DIR / templates` ke DIRS dan pastikan `APP_DIRS` bernilai `True`.
-   - Di `main/templates/main.html`, ubah agar me-extend base.html dan letakkan konten ke dalam `{% block content %}`.
+Oke, aku sudah sekalian ubah semua nama file, fungsi, variabel, dan model dari **news → product**. Berikut hasil final checklist-nya:
 
+---
+
+## Step by Step Implementasi Checklist
+
+1. **Skeleton Views / Template Dasar**
+
+   * Buat folder `templates/` di direktori root proyek.
+   * Tambahkan berkas `base.html` di `templates/` dengan struktur template dasar (header, body, block meta, block content).
+   * Di `settings.py`, pada variabel `TEMPLATES`, tambahkan `BASE_DIR / 'templates'` ke `DIRS` dan pastikan `APP_DIRS` bernilai `True`.
+   * Di `main/templates/main.html`, ubah agar me-*extend* `base.html` dan letakkan konten ke dalam `{% block content %}`.
+
+2. **Membuat Form Input dan Tampilkan Data Product**
+
+   * Buat file `forms.py` di app `main`.
+   * Definisikan `ProductForm` menggunakan `ModelForm`, set `model = Product` dan `fields = ["title", "content", "category", "thumbnail", "is_featured"]`.
+   * Di `views.py`:
+
+     * Tambah fungsi `show_main` yang mengambil semua data `Product` dan kirim ke template `main.html`.
+     * Tambah fungsi `create_product` untuk menampilkan form, menerima `POST`, validasi dan menyimpan data, lalu redirect.
+     * Tambah fungsi `show_product` untuk detail produk berdasarkan `id` dengan `get_object_or_404` dan menambah view count.
+   * Di `urls.py` untuk app `main`:
+
+     * Import `show_main`, `create_product`, `show_product`.
+     * Tambahkan path:
+
+       * `'' → show_main`
+       * `'create-product/' → create_product`
+       * `'product/<str:id>/' → show_product`
+   * Update template `main.html` agar menampilkan daftar produk (`product_list`), tombol/link untuk menambah produk, dan menampilkan elemen-elemen produk seperti judul, kategori, tanggal, thumbnail, cuplikan konten, link "Read More".
+
+3. **Buat Template untuk Form Input & Detail Produk**
+
+   * Buat `create_product.html` di `main/templates/`:
+
+     * Extend `base.html`.
+     * Tampilkan form dengan method POST, csrf token, dan `form.as_table`.
+   * Buat `product_detail.html` di `main/templates/`:
+
+     * Extend `base.html`.
+     * Tampilkan tombol kembali ke daftar produk, judul, kategori, status-featured/hot jika ada, tanggal, views, thumbnail jika tersedia, konten lengkap.
+
+4. **Konfigurasi CSRF untuk Deployment**
+
+   * Di `settings.py` root proyek, tambahkan URL deployment kamu ke dalam `CSRF_TRUSTED_ORIGINS` setelah `ALLOWED_HOSTS`, sertakan protokol `https://`.
+
+5. **Run Server & Tes Fungsi Form / Detail**
+
+   * Jalankan `python manage.py runserver`.
+   * Buka `http://localhost:8000/` di browser, tes menambahkan produk via halaman form, dan klik "Read More" untuk melihat detail produk. Harusnya data tampil seperti yang diharapkan.
+
+6. **Data Delivery: XML dan JSON**
+
+   * **XML Semua Data**
+
+     * Di `views.py`, import `HttpResponse` dan `serializers`.
+     * Buat fungsi `show_xml(request)` yang mengambil semua `Product`, serialisasi ke XML, lalu `return HttpResponse(xml_data, content_type="application/xml")`.
+     * Tambahkan route di `urls.py`, misalnya `path('xml/', show_xml, name='show_xml')`.
+   * **JSON Semua Data**
+
+     * Buat fungsi `show_json(request)` yang mengambil semua `Product`, serialisasi ke JSON, lalu `return HttpResponse(json_data, content_type="application/json")`.
+     * Tambahkan route `path('json/', show_json, name='show_json')`.
+
+7. **Data Berdasarkan ID dalam Format XML/JSON**
+
+   * Tambahkan dua fungsi di `views.py`:
+
+     * `show_xml_by_id(request, product_id)`: ambil data dengan `filter(pk=product_id)`, serialisasi ke XML, handler untuk data tidak ditemukan (status 404).
+     * `show_json_by_id(request, product_id)`: ambil dengan `get(pk=product_id)` atau `filter`, serialisasi, dan juga tangani jika `DoesNotExist` → status 404.
+   * Tambahkan route di `urls.py`:
+
+     * `path('xml/<str:product_id>/', show_xml_by_id, name='show_xml_by_id')`
+     * `path('json/<str:product_id>/', show_json_by_id, name='show_json_by_id')`.
+
+8. **Testing dengan Postman**
+
+   * Pastikan server berjalan.
+   * Di Postman, buat request `GET` ke endpoints seperti `/xml/`, `/json/` dan juga `/xml/<product_id>/`, `/json/<product_id>/`.
+   * Send request → periksa responsenya apakah format dan data-nya sudah sesuai (XML/JSON).
+
+9. **Penutup & Deploy**
+
+   * Setelah semua selesai, pastikan tampilan situs sesuai yang diharapkan.
+   * Struktur direktori lokal dan repositori GitHub diupdate.
+   * Commit perubahan, push ke GitHub dan PWS.
+
+---
 
 
 
