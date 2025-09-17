@@ -61,7 +61,7 @@ Link: https://raditya-amoret-platformbolapersija.pbp.cs.ui.ac.id
 Django dipilih sebagai materi untuk pemula karena menyediakan lingkungan belajar yang lengkap, terstruktur, aman, dan relevan dengan praktik industri. Framework ini memberi banyak fitur bawaan (ORM, admin panel, autentikasi, keamanan), dokumentasi yang kuat, serta pola arsitektur MVT yang mudah dipahami. Dengan begitu, pemula bisa fokus memahami konsep inti pengembangan web tanpa terbebani oleh detail teknis yang rumit.
 
 ---
-## Feedback untuk ASDOS
+## Feedback untuk Asdos di tutorial 1
 selama menjalani perkuliahan 2 minggu belum ada masalah,  ASDOS sangat baik dalam membantukan mahasiswa yang sedang berkendala saat menjalani tutorial. Semoga kakak tetap semangat mengajari kita
 
 ---
@@ -102,6 +102,20 @@ csrf_token adalah Cross-Site Request Forgery token, Token ini di-generate secara
 - Menambah lapisan keamanan selain autentikasi dan otorisasi.
 
 Jika csrf_token tidak ada, aplikasi akan rentan terhadap serangan CSRF. Penyerang bisa memaksa pengguna yang sedang login untuk melakukan aksi berbahaya tanpa mereka sadari. Hal ini dapat dimanfaatkan untuk mencuri informasi sensitif, melakukan transaksi keuangan ilegal, mengambil alih akun, mengubah konfigurasi, atau bahkan merusak reputasi pengguna maupun organisasi.
+
+---
+
+## Feedback untuk Asdos di tutorial 2
+
+Menurut saya tidak ada masalah, intstruksi yag diberikan oleh ASDOS dalam tutorial 2 sudah cukup jelas dan dapat diphami
+
+---
+## Step by Step Implementasi Checklist tugas 2
+1. Skeleton Views / Template Dasar
+   - Buat folder `templates` di direktori root proyek.
+   - Tambahkan berkas `base.html` di templates/ dengan struktur `template dasar` (header, body, block meta, block content).
+   - Di `settings.py`, pada variabel TEMPLATES, tambahkan `BASE_DIR / templates` ke DIRS dan pastikan `APP_DIRS` bernilai `True`.
+   - Di `main/templates/main.html`, ubah agar me-extend base.html dan letakkan konten ke dalam `{% block content %}`.
 
 
 
