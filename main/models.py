@@ -7,15 +7,16 @@ class   Product(models.Model):
     description = models.TextField()
     thumbnail = models.URLField()
     category = models.CharField()
+    product_views = models.PositiveIntegerField(default=0)
     is_featured = models.BooleanField()
     
     def __str__(self):
         return self.title
     
     @property
-    def is_news_hot(self):
-        return self.news_views > 20
+    def is_product_hot(self):
+        return self.product_views > 20
         
     def increment_views(self):
-        self.news_views += 1
+        self.product_views += 1
         self.save()
