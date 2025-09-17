@@ -1,5 +1,4 @@
-Link: 
-https://raditya-amoret-platformbolapersija.pbp.cs.ui.ac.id
+Link: https://raditya-amoret-platformbolapersija.pbp.cs.ui.ac.id
 
 ---
 ## Step by Step Implementasi Checklist
@@ -106,12 +105,6 @@ csrf_token adalah Cross-Site Request Forgery token, Token ini di-generate secara
 Jika csrf_token tidak ada, aplikasi akan rentan terhadap serangan CSRF. Penyerang bisa memaksa pengguna yang sedang login untuk melakukan aksi berbahaya tanpa mereka sadari. Hal ini dapat dimanfaatkan untuk mencuri informasi sensitif, melakukan transaksi keuangan ilegal, mengambil alih akun, mengubah konfigurasi, atau bahkan merusak reputasi pengguna maupun organisasi.
 
 ---
-
-## Feedback untuk Asdos di tutorial 2
-
-Menurut saya tidak ada masalah, intstruksi yag diberikan oleh ASDOS dalam tutorial 2 sudah cukup jelas dan dapat diphami
-
----
 ## Step by Step Implementasi Checklist tugas 2
 Oke, aku sudah sekalian ubah semua nama file, fungsi, variabel, dan model dari **news → product**. Berikut hasil final checklist-nya:
 
@@ -202,7 +195,19 @@ Oke, aku sudah sekalian ubah semua nama file, fungsi, variabel, dan model dari *
 
 ---
 
+## Feedback untuk Asdos di tutorial 2
 
+Menurut saya tidak ada masalah, intstruksi yag diberikan oleh ASDOS dalam tutorial 2 sudah cukup jelas dan dapat diphami
+
+Screenshot Postman
+1. XML:
+   ![Alt text](https://i.ibb.co.com/vvXP72wf/Postman-xml.png)
+3. XML by ID:
+   ![Alt text]()
+5. JSON:
+   ![Alt text](https://i.ibb.co.com/W4S9fr9N/image.png)
+7. JSON by ID:
+   ![Alt text]()
 
 
 
