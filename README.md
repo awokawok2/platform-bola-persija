@@ -209,6 +209,92 @@ Screenshot Postman
 7. JSON by ID:
    ![Alt text]()
 
+---
+## TUGAS 4
+
+## Apa itu Django AuthenticationForm? Jelaskan juga kelebihan dan kekurangannya.
+
+Django AuthenticationForm adalah form bawaan Django yang digunakan untuk menangani proses autentikasi pengguna. Form ini menyediakan field untuk username dan password, serta melakukan validasi kredensial terhadap database pengguna.
+
+Kelebihan:
+- Siap pakai - Tidak perlu membuat form manual dari scratch
+- Validasi otomatis - Memeriksa kredensial secara otomatis
+- Keamanan terintegrasi - Sudah menerapkan best practices security
+- Kustomisasi mudah - Bisa di-extend untuk menambah fungsionalitas
+- Terintegrasi dengan User model - Langsung bekerja dengan model User Django
+
+Kekurangan:
+- Terbatas secara default - Hanya handle username/password
+- Kurang fleksibel - Untuk kebutuhan kompleks butuh kustomisasi
+- Tampilan dasar - UI/UX perlu disesuaikan dengan desain aplikasi
+
+---
+##  Apa perbedaan antara autentikasi dan otorisasi? Bagaiamana Django mengimplementasikan kedua konsep tersebut?
+Perbedaan:
+- Autentikasi: Proses verifikasi identitas pengguna (siapa Anda?)
+- Otorisasi: Proses menentukan hak akses pengguna (apa yang boleh Anda lakukan?)
+
+---
+
+Contoh Autentikasi:
+from django.contrib.auth import authenticate, login  
+
+def login_view(request):  
+&nbsp;&nbsp;&nbsp;&nbsp; username = request.POST['username']  
+&nbsp;&nbsp;&nbsp;&nbsp; password = request.POST['password']  
+&nbsp;&nbsp;&nbsp;&nbsp; user = authenticate(request, username=username, password=password)  
+&nbsp;&nbsp;&nbsp;&nbsp; if user is not None:  
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; login(request, user)  # Autentikasi berhasil  
+
+---
+
+Contoh Otoritasi:
+from django.contrib.auth.decorators import login_required, permission_required
+
+@login_required
+def protected_view(request):  
+&nbsp;&nbsp;&nbsp;&nbsp; # Hanya untuk user yang sudah login  
+&nbsp;&nbsp;&nbsp;&nbsp; pass  
+
+@permission_required('app.delete_item')  
+def delete_view(request):  
+&nbsp;&nbsp;&nbsp;&nbsp; # Hanya untuk user dengan permission tertentu  
+&nbsp;&nbsp;&nbsp;&nbsp; pass  
+
+---
+## Apa saja kelebihan dan kekurangan session dan cookies dalam konteks menyimpan state di aplikasi web?
+Kelebihan Session:
+- Aman - Data disimpan di server
+- Kapasitas besar - Dapat menyimpan data yang kompleks
+- Terkontrol - Server memiliki kendali penuh
+
+Kekurangan Session:
+- Beban server - Menyimpan data di memori/database server
+- Scalability issues - Bermasalah pada aplikasi terdistribusi
+
+Kelebihan Cookies:
+- Ringan untuk server - Data disimpan di client
+- Persisten - Dapat bertahan lama
+- Client-side storage - Mengurangi beban server
+
+Kekurangan Cookies:
+- Size terbatas - Maksimal 4KB per cookie
+- Rentan keamanan - Dapat dimodifikasi oleh client
+- Privacy concerns - Diatur oleh berbagai regulasi
+
+---
+## Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai? Bagaimana Django menangani hal tersebut?
+Risiko Potensial:
+- Cross-Site Scripting (XSS) - Pencurian cookie melalui JavaScript
+- Cross-Site Request Forgery (CSRF) - Eksploitasi session pengguna
+- Man-in-the-Middle - Intercept cookie melalui jaringan tidak aman
+- Cookie Theft - Pencurian melalui berbagai vektor
+
+Cara Django menangani:
+- Gembok JavaScript (HttpOnly)
+- Kode rahasia (CSRF Token)
+- Koneksi aman (HTTPS Only)
+- Batas waktu (Session Expiry)
 
 
 Raditya Amoret - 2406495735 - PBP D
