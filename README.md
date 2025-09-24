@@ -296,5 +296,32 @@ Cara Django menangani:
 - Koneksi aman (HTTPS Only)
 - Batas waktu (Session Expiry)
 
+---
+## Step by Step Implementasi Checklist
 
+1. Implementasi registrasi
+   - Di `views.py`, import `UserCreationForm` dan `messages`
+   - Buatlah fungsi `register` dalam `views.py`
+   - Buatlah berkas baru dalam main/templates dengan nama `register.html`
+   - di `urls.py`, import fungsi `register` dan tambahkan path url dalam `úrlpatterns`
+  
+2. Implementasi login
+   - Di `views.py`, import `authenticate`, `login`, dan `AuthenticationForm`
+   - Buatlah fungsi `login_user` dalam `views.py`
+   - Buatlah berkas baru dalam main/templates dengan nama `login.html`
+   - di `urls.py`, import fungsi `login_user` dan tambahkan path url dalam `úrlpatterns`
+  
+3. Implementasi logout
+   - Di `views.py`, import logout bersama dengan `authenticate` dan `login`
+   - Buatlah fungsi `logout_user` dalam `views.py`
+   - Buka berkas main/templates dan tambahkan potongan kode untuk menempati tombol logout
+   - di `urls.py`, import fungsi `logout_user` dan tambahkan path url dalam `úrlpatterns`
+  
+4. Menghunbungkan model Product dan User
+   - Di `models.py`, import `User`
+   - Pada model Product kita tambahkan `user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)`
+   - setelah itu melakukan migrasi
+   - Di views.py pada bagian create product kita akan mengubah potongan kode agar menampilkan form tambah product, memproses input dari user yang sudah login, menyimpan entri produk ke database dengan mencatat user pembuatnya, lalu mengarahkan balik ke halaman utama setelah berhasil.
+
+---
 Raditya Amoret - 2406495735 - PBP D
