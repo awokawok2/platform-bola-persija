@@ -324,4 +324,56 @@ Cara Django menangani:
    - Di views.py pada bagian create product kita akan mengubah potongan kode agar menampilkan form tambah product, memproses input dari user yang sudah login, menyimpan entri produk ke database dengan mencatat user pembuatnya, lalu mengarahkan balik ke halaman utama setelah berhasil.
 
 ---
+#Tugas 5
+
+##Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+
+## 1. Urutan Prioritas CSS Selector (Specificity Order)
+
+Jika sebuah elemen memiliki lebih dari satu aturan CSS, browser akan menentukan berdasarkan **specificity**:
+
+1. **Inline Style** → langsung pada atribut `style=""` (paling tinggi).
+   ```html
+   <p style="color: red;">Teks ini merah</p>
+
+2. **ID Selector → #id
+   #judul { color: blue; }
+
+3. **Class, Attribute, Pseudo-class Selector → `.class`, `[type="text"]`, `:hover`
+   .teks { color: green; }
+
+4. **Element & Pseudo-element Selector → `p`, `h1`, `::before`
+   p { color: black; }
+
+---
+## Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design, serta jelaskan mengapa!
+
+Responsive design membuat tampilan web menyesuaikan ukuran layar (PC, tablet, HP).
+
+Kenapa penting?
+- Mayoritas user mengakses web dari smartphone.
+- Meningkatkan user experience (UX).
+- SEO friendly (disukai Google).
+
+## Contoh:
+Sudah responsive → Tokopedia, Shopee.
+Tampilan otomatis menyesuaikan layar.
+
+Belum responsive → Website sekolah lama yang hanya untuk desktop.
+Tampilan berantakan di HP, teks kecil, harus zoom.
+
+
+---
+## Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+
+Dalam CSS Box Model:
+- Margin → Jarak luar elemen (antar elemen).
+- Border → Garis tepi di sekitar elemen.
+- Padding → Jarak antara konten dan border.
+
+---
+## Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+
+
+
 Raditya Amoret - 2406495735 - PBP D
