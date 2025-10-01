@@ -106,7 +106,6 @@ Jika csrf_token tidak ada, aplikasi akan rentan terhadap serangan CSRF. Penyeran
 
 ---
 ## Step by Step Implementasi Checklist tugas 2
-Oke, aku sudah sekalian ubah semua nama file, fungsi, variabel, dan model dari **news → product**. Berikut hasil final checklist-nya:
 
 ---
 
