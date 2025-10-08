@@ -371,8 +371,71 @@ Dalam CSS Box Model:
 - Padding → Jarak antara konten dan border.
 
 ---
-## Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+## TUGAS 6
 
+## Apa perbedaan antara synchronous request dan asynchronous request?
 
+Synchronous request (permintaan sinkron) berarti ketika klien (browser) mengirim permintaan ke server, browser “menunggu” hingga server membalas sepenuhnya sebelum melanjutkan eksekusi kode JavaScript atau interaksi pengguna berikutnya. Hal ini bisa menyebabkan halaman “membeku” sejenak jika respons lama.
 
+Asynchronous request (permintaan asinkron) memungkinkan browser mengirim permintaan ke server, lalu tetap bisa menjalankan kode lain atau merespon input pengguna, sambil menunggu respons dari server di latar belakang. Setelah respons tiba, callback atau promise akan menangani hasilnya.
+
+Dengan AJAX, kita memanfaatkan asynchronous request, sehingga bagian halaman bisa diubah tanpa me-reload seluruh halaman.
+
+---
+## Bagaimana AJAX bekerja di Django (alur request–response)?
+Berikut ringkasan alur dari permintaan AJAX di Django:
+
+1. Browser/klien men-trigger event JavaScript (misalnya klik tombol atau load halaman).
+2. JavaScript menggunakan fetch() atau XMLHttpRequest untuk mengirim permintaan HTTP (GET/POST) ke endpoint Django (biasanya sebuah view khusus yang mengembalikan data JSON).
+3. Django menerima request, menjalankan view yang sesuai. View ini biasanya akan:
+- Mengecek autentikasi, izin (permissions), dan keamanan (CSRF, validasi data).
+- Memproses logika bisnis (misalnya mengambil objek, menyimpan data, dsb).
+- Mengubah objek Python (model) menjadi JSON (misalnya menggunakan JsonResponse). 
+4. Django mengirim respons JSON ke klien.
+5. JavaScript di browser menangkap respons tersebut (melalui Promise / callback) dan kemudian memanipulasi DOM (misalnya menyisipkan data, mengubah tampilan) sesuai data yang diterima, tanpa reload halaman penuh.
+
+Contoh konkret di tutorial: halaman detail berita awalnya kosong (“placeholder”), kemudian JavaScript memanggil endpoint show_json_by_id, menerima JSON, lalu memperbarui elemen-elemen HTML (judul, konten, gambar, dsb).
+
+---
+## Apa keuntungan menggunakan AJAX dibandingkan render biasa di Django?
+Beberapa keuntungan utama:
+
+- Interaktivitas & Responsivitas: halaman terasa lebih “hidup” karena pengguna tidak perlu memuat ulang (refresh) seluruh halaman; hanya bagian yang berubah yang diperbarui.
+- Hemat data & bandwidth: hanya data yang diperlukan yang dikirim (JSON), bukan keseluruhan template HTML.
+- Performa lebih baik: karena tidak memuat kembali CSS, JS, header, footer, dsb — hanya bagian konten yang berubah.
+- Pengalaman pengguna lebih mulus: transisi antar tampilan bisa halus tanpa umur “putus-muat”.
+- Komposisi halaman modular: bagian halaman bisa diupdate secara independen (misalnya bagian komentar, notifikasi) tanpa memengaruhi layout utama.
+- Kemampuan real-time atau semi real-time: AJAX memungkinkan kita memperbarui data secara berkala (polling) atau saat ada perubahan (websocket atau server push), sehingga pengguna melihat perubahan langsung.
+
+## Bagaimana cara memastikan keamanan saat menggunakan AJAX untuk fitur Login dan Register di Django?
+Beberapa aspek keamanan yang wajib diperhatikan:
+
+1. CSRF Token
+- Untuk request POST (atau metode selain GET) via AJAX, kita harus menyertakan token CSRF agar Django dapat memverifikasi bahwa request berasal dari sumber tepercaya.
+- Di template, biasanya menyisipkan {% csrf_token %} atau menyediakan token CSRF via meta tag, lalu di JavaScript melampirkannya ke header X-CSRFToken.
+- Pastikan @csrf_exempt tidak digunakan sembarangan kecuali benar-benar aman.
+
+2. Validasi data & sanitasi
+- Meski data dikirim lewat AJAX, server tetap harus memvalidasi input (username, password, email, dsb).
+- Hindari kepercayaan penuh pada validasi di client side; selalu lakukan validasi di server.
+
+3. Rate limiting / throttle
+- Untuk mencegah brute force login/register, batasi jumlah percobaan (misalnya dengan django-ratelimit).
+- Tambahkan proteksi seperti CAPTCHA atau verifikasi email.
+
+4. Enkripsi / penggunaan HTTPS
+- Pastikan situs menggunakan HTTPS, agar data (termasuk username dan password) tidak dikirim secara plaintext.
+- Ini juga penting agar token CSRF dan header AJAX tidak dapat dicegat.
+
+5. Keamanan respons
+- Jangan mengembalikan data sensitif (misalnya hash password, token internal) dalam respons JSON.
+- Untuk kesalahan (error), jangan terlalu mendetail agar tidak memberi petunjuk tentang database/struktur internal.
+
+6. Autentikasi & sesi
+- Pastikan AJAX request untuk fitur yang butuh otorisasi (misal edit profil) memeriksa request.user.is_authenticated.
+- Pakai login_required atau middleware sesuai kebutuhan.
+
+7. CORS dan kebijakan asal (origin)
+- Jika front-end dan back-end di domain berbeda, atur kebijakan Cross-Origin Resource Sharing (CORS) dengan hati-hati agar hanya domain tepercaya yang bisa mengakses endpoint AJAX.
+  
 Raditya Amoret - 2406495735 - PBP D
